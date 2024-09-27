@@ -9,13 +9,15 @@
         <EntityTypeShape EntityType="DbMyPortfolioModel.Contact" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="DbMyPortfolioModel.Feature" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DbMyPortfolioModel.Profile" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbMyPortfolioModel.Skills" Width="1.5" PointX="5" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbMyPortfolioModel.SocialMedia" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbMyPortfolioModel.sysdiagrams" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbMyPortfolioModel.Education" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbMyPortfolioModel.Expertise" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DbMyPortfolioModel.Service" Width="1.5" PointX="4.875" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbMyPortfolioModel.Skills" Width="1.5" PointX="5" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbMyPortfolioModel.SocialMedia" Width="1.5" PointX="5" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbMyPortfolioModel.sysdiagrams" Width="1.5" PointX="6.875" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbMyPortfolioModel.Education" Width="1.5" PointX="6.875" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbMyPortfolioModel.Expertise" Width="1.5" PointX="6.875" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DbMyPortfolioModel.Service" Width="1.5" PointX="4.875" PointY="5.625" IsExpanded="true" />
         <AssociationConnector Association="DbMyPortfolioModel.FK_Contact_Category" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DbMyPortfolioModel.About" Width="1.5" PointX="0.75" PointY="7" />
+        <EntityTypeShape EntityType="DbMyPortfolioModel.Experience" Width="1.5" PointX="2.75" PointY="8" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

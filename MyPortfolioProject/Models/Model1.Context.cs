@@ -35,5 +35,7 @@ namespace MyPortfolioProject.Models
         public virtual DbSet<Education> Education { get; set; }
         public virtual DbSet<Expertise> Expertise { get; set; }
         public virtual DbSet<Service> Service { get; set; }
+        public virtual DbSet<About> About { get; set; }
+        public virtual DbSet<Experience> Experience { get; set; }
     }
 }
