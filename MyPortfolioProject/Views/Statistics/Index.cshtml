@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<div class="alert alert-success">Toplam Mesaj Sayısı: <b> @ViewBag.totalMessageCount </b> </div>
+<div class="alert alert-danger">Okunan Mesaj Sayısı: <b> @ViewBag.messageIsReadTrueCount </b> </div>
+<div class="alert alert-warning">Okunmayan Mesaj Sayısı: <b> @ViewBag.messageIsReadFalseCount </b> </div>
+<div class="alert alert-dark">Yetenek Sayısı: <b> @ViewBag.skillCount </b> </div>
+<div class="alert alert-info">Yetenek Toplam Puanı: <b> @ViewBag.skillRateSum </b> </div>
+<div class="alert alert-primary">Yetenek Ortalama Puanı: <b> @ViewBag.skillRateAvg </b> </div>
+<div class="alert alert-primary" style="background-color:burlywood">En Yüksek Puanlı Yetenek Adı: <b> @ViewBag.maxRateSkillName </b> </div>
+<div class="alert alert-primary" style="background-color:aquamarine">Mesaj Konusu Referans Olanların Sayısı: <b> @ViewBag.getMessageCountBtSubjectReferances </b> </div>
+<div class="alert alert-primary" style="background-color:aliceblue">İçinde H harfi geçen okunmuş Mesaj Sayısı: <b> @ViewBag.getMessafeCountByEmailContainHAndIsReadTrue </b> </div>

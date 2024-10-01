@@ -37,5 +37,6 @@ namespace MyPortfolioProject.Models
         public virtual DbSet<Service> Service { get; set; }
         public virtual DbSet<About> About { get; set; }
         public virtual DbSet<Experience> Experience { get; set; }
+        public virtual DbSet<Admin> Admin { get; set; }
     }
 }
