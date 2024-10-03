@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyPortfolioProject.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,22 +9,52 @@ namespace MyPortfolioProject.Controllers
 {
     public class DefaultController : Controller
     {
-        // GET: Default
+        DbMyPortfolioEntities context = new DbMyPortfolioEntities();
         public ActionResult Index()
         {
             return View();
         }
-        public PartialViewResult PartialHead() 
+        public PartialViewResult PartialHead()
         {
-        return PartialView();
+            return PartialView();
         }
-        public PartialViewResult PartialScript() 
+        public PartialViewResult PartialScript()
         {
-        return PartialView();
+            return PartialView();
         }
         public PartialViewResult PartialNavbar()
         {
             return PartialView();
         }
+        public PartialViewResult PartialHeader()
+        {
+            ViewBag.title = context.Profile.Select(x => x.Title).FirstOrDefault();
+            ViewBag.description = context.Profile.Select(x => x.Description).FirstOrDefault();
+            ViewBag.address = context.Profile.Select(x => x.Adress).FirstOrDefault();
+            ViewBag.email = context.Profile.Select(x => x.Email).FirstOrDefault();
+            ViewBag.phone = context.Profile.Select(x => x.Phone).FirstOrDefault();
+            ViewBag.github = context.Profile.Select(x => x.Githup).FirstOrDefault();
+            ViewBag.imageUrl = context.Profile.Select(x => x.ImageUrl).FirstOrDefault();
+
+
+            return PartialView();
+        }
+
+        public PartialViewResult PartialAbout() 
+        {
+            var values = context.About.ToList();    
+            return PartialView(values);
+        }
+        public PartialViewResult PartialExperience()
+        {
+            var values = context.Experience.ToList();
+            return PartialView(values);
+        }
+        public PartialViewResult PartialSkill()
+        {
+            var values = context.Skills.Where(x=>x.Status==true).ToList();
+            return PartialView(values);
+        }
+
     }
 }

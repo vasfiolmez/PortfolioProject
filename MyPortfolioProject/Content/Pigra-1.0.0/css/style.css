@@ -124,14 +124,14 @@ img {
 }
 
 @media (min-width: 992px) {
-    .container-fluid:{
+    .container-fluid::before{
         content: "";
         position: absolute;
         width: 30%;
-        height: 100%;
+       
         top: 0;
         left: 0;
-        background: var(--bs-white);
+        background: var(--bs-dark);
         z-index: -1;
     }
 }
