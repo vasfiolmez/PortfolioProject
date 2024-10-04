@@ -12,7 +12,26 @@ namespace MyPortfolioProject.Controllers
         DbMyPortfolioEntities context = new DbMyPortfolioEntities();
         public ActionResult Index()
         {
+            List<SelectListItem> values = (from x in context.Category.ToList()
+                                           select new SelectListItem
+                                           {
+                                               Text = x.CategoryName,
+                                               Value = x.CategoryId.ToString()
+                                           }).ToList();
+            ViewBag.v=values;
+
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Index(Contact contact)
+        {
+            contact.SendDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            contact.IsRead = false;
+
+            context.Contact.Add(contact);
+            context.SaveChanges();
+            return RedirectToAction("Index");
         }
         public PartialViewResult PartialHead()
         {
@@ -40,9 +59,9 @@ namespace MyPortfolioProject.Controllers
             return PartialView();
         }
 
-        public PartialViewResult PartialAbout() 
+        public PartialViewResult PartialAbout()
         {
-            var values = context.About.ToList();    
+            var values = context.About.ToList();
             return PartialView(values);
         }
         public PartialViewResult PartialExperience()
@@ -52,8 +71,13 @@ namespace MyPortfolioProject.Controllers
         }
         public PartialViewResult PartialSkill()
         {
-            var values = context.Skills.Where(x=>x.Status==true).ToList();
+            var values = context.Skills.Where(x => x.Status == true).ToList();
             return PartialView(values);
+        }
+
+        public PartialViewResult PartialFooter()
+        {
+            return PartialView();
         }
 
     }
