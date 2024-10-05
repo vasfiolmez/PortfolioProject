@@ -1,9 +1,3 @@
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-
 
 /*** Spinner Start ***/
 #spinner {
@@ -117,18 +111,17 @@ img {
 }
 
 
-}
 .container-fluid {
     position: relative;
     border-bottom: 1px solid rgba(0, 0, 0, .08);
 }
 
 @media (min-width: 992px) {
-    .container-fluid::before{
+    .container-fluid::before {
         content: "";
         position: absolute;
-        width: 30%;
-       
+        width: 15%;
+        height: 100%;
         top: 0;
         left: 0;
         background: var(--bs-dark);
