@@ -12,7 +12,7 @@ namespace MyPortfolioProject.Controllers
         DbMyPortfolioEntities context = new DbMyPortfolioEntities();
         public ActionResult Inbox()
         {
-            var values = context.Contact.ToList();
+            var values = context.Contact.ToList();          
             return View(values);
         }
         public ActionResult ChangeMessageStatusToTrue(int id)
@@ -29,5 +29,26 @@ namespace MyPortfolioProject.Controllers
             context.SaveChanges();
             return RedirectToAction("Inbox");
         }
+        public ActionResult DeleteMessage(int id)
+        {
+            var value = context.Contact.Find(id);
+            context.Contact.Remove(value);
+            context.SaveChanges();
+            return RedirectToAction("Inbox");
+        }
+
+        [HttpGet]
+        public ActionResult MessageDetails(int id)
+        {
+            var value = context.Contact.Find(id);
+            if(value.IsRead==false)
+            {
+                value.IsRead = true;
+            }
+            context.SaveChanges();
+            return View(value);
+        }
+       
+
     }
 }

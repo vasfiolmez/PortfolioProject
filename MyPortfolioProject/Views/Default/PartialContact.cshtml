@@ -1,0 +1,69 @@
+﻿@model MyPortfolioProject.Models.Contact
+
+
+<div class="container-fluid" id="pigraContact">
+    <div class="container">
+        <div class="row g-0">
+            @* contact sidebar *@
+            @Html.Action("PartialContactSidebar", "Contact")
+
+            <div class="col-lg-9">
+                <div class="contact-content h-100 pt-6 ps-6 pb-6">
+                    <div class="bg-light p-4">
+                        <div class="row g-5">
+
+                            @Html.Action("PartialContactDetail", "Contact")
+
+                            <div class="col-xl-7 wow fadeInUp" data-wow-delay="0.3s">
+                                <div>
+                                    <form method="post">
+                                        <div class="row g-3">
+                                            <div class="col-lg-12 col-xl-6">
+                                                <div class="form-floating">
+                                                    @Html.TextBoxFor(x => x.NameSurname, new { @class = "form-control border-0", @placeholder = "Adınız Soyadınız" })
+                                                    <label for="name">Adınız Soyadınız</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-xl-6">
+                                                <div class="form-floating">
+                                                    @Html.TextBoxFor(x => x.Email, new { @class = "form-control border-0", @placeholder = "Email Adresiniz" })
+
+                                                    <label for="email">Email Adresiniz</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-xl-6">
+                                                <div class="form-floating">
+                                                    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.category, new { @class = "form-control border-0" })
+                                                    <label for="phone">Kategori</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-xl-6">
+                                                <div class="form-floating">
+                                                    @Html.TextBoxFor(x => x.Subject, new { @class = "form-control border-0", @placeholder = "Mesajınızın Konusu" })
+
+                                                    <label for="project">Mesaj Konunuz</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12">
+                                                <div class="form-floating">
+                                                    @Html.TextAreaFor(x => x.Message, new { @class = "form-control border-0", @style = "height: 120px", @placeholder = "Mesajınızı yazınız" })
+                                                    <label for="message">Mesajınız</label>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-12">
+                                                <button class="btn btn-primary w-100 py-3"> Mesajı Gönder</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            @Html.Action("PartialContactLocation", "Contact")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+﻿@model MyPortfolioProject.Models.Contact
+@{
+    ViewBag.Title = "MessageDetails";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<h2>Mesaj İçeriği</h2>
+
+
+
+<form>
+
+    @Html.HiddenFor(x => x.ContactId)
+
+    <label>Adı Soyadı</label>
+    @Html.TextBoxFor(x => x.NameSurname, new { @class = "form-control" })
+    <br />
+
+    <label>Email Adresi</label>
+    @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+    <br />
+
+    <label>Mesajın Konusu</label>
+    @Html.TextBoxFor(x => x.Subject, new { @class = "form-control" })
+    <br />
+
+    <label>Mesajı</label>
+    @Html.TextAreaFor(x => x.Message, new { @class = "form-control" ,@rows="5"})
+    <br />
+
+</form>
+<a class="btn btn-info" href="/Message/Inbox/">Gelen Mesajlara Git</a>

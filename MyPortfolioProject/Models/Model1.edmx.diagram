@@ -19,6 +19,7 @@
         <EntityTypeShape EntityType="DbMyPortfolioModel.About" Width="1.5" PointX="8.75" PointY="5.75" />
         <EntityTypeShape EntityType="DbMyPortfolioModel.Experience" Width="1.5" PointX="9" PointY="3.375" />
         <EntityTypeShape EntityType="DbMyPortfolioModel.Admin" Width="1.5" PointX="9" PointY="1" />
+        <EntityTypeShape EntityType="DbMyPortfolioModel.Testimonial" Width="1.5" PointX="0.625" PointY="7.375" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

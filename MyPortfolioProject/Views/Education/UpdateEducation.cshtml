@@ -1,13 +1,14 @@
 ﻿@model MyPortfolioProject.Models.Education
 @{
-    ViewBag.Title = "CreateEducation";
+    ViewBag.Title = "UpdateEducation";
     Layout = "~/Views/Admin/Index.cshtml";
 }
 
-<h2 class="mb-4">Yeni Eğitim Hayatım Bilgisi Girişi</h2>
+<h2>Eğitim Hayatı Güncelleme Sayfası</h2>
 
 <form method="post">
 
+    @Html.HiddenFor(x => x.EducationId)
 
     <label>Başlık</label>
     @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
@@ -18,9 +19,11 @@
     <br />
 
     <label>Açıklama</label>
-    @Html.TextAreaFor(x => x.Description, new { @class = "form-control", @rows = "4" })
+    @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
     <br />
 
     <button class="btn btn-info">Eğitim Bilgisini Kaydet</button>
 
 </form>
+
+

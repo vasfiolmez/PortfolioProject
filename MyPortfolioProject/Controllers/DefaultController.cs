@@ -10,15 +10,9 @@ namespace MyPortfolioProject.Controllers
     public class DefaultController : Controller
     {
         DbMyPortfolioEntities context = new DbMyPortfolioEntities();
+
         public ActionResult Index()
         {
-            List<SelectListItem> values = (from x in context.Category.ToList()
-                                           select new SelectListItem
-                                           {
-                                               Text = x.CategoryName,
-                                               Value = x.CategoryId.ToString()
-                                           }).ToList();
-            ViewBag.v=values;
 
             return View();
         }
@@ -26,6 +20,7 @@ namespace MyPortfolioProject.Controllers
         [HttpPost]
         public ActionResult Index(Contact contact)
         {
+
             contact.SendDate = DateTime.Parse(DateTime.Now.ToShortDateString());
             contact.IsRead = false;
 
@@ -64,6 +59,11 @@ namespace MyPortfolioProject.Controllers
             var values = context.About.ToList();
             return PartialView(values);
         }
+        public PartialViewResult PartialEducation()
+        {
+            var values=context.Education.ToList();
+            return PartialView(values);
+        }
         public PartialViewResult PartialExperience()
         {
             var values = context.Experience.ToList();
@@ -73,6 +73,37 @@ namespace MyPortfolioProject.Controllers
         {
             var values = context.Skills.Where(x => x.Status == true).ToList();
             return PartialView(values);
+        }
+        public PartialViewResult PartialServices()
+        {
+            var values=context.Service.ToList();
+            return PartialView(values);
+        }
+        public PartialViewResult PartialPortfolio()
+        {
+            return PartialView();
+        }
+
+        public PartialViewResult PartialTestimonial()
+        {
+            var values = context.Testimonial.ToList();
+            return PartialView(values);
+        }
+
+        public PartialViewResult PartialContact()
+        {
+
+
+            List<SelectListItem> values = (from x in context.Category.ToList()
+                                           select new SelectListItem
+                                           {
+                                               Text = x.CategoryName,
+                                               Value = x.CategoryId.ToString()
+
+                                           }).ToList();
+            ViewBag.category = values;
+
+            return PartialView();
         }
 
         public PartialViewResult PartialFooter()

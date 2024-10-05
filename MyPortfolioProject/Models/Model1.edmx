@@ -28,6 +28,7 @@
           </Key>
           <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CategoryName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="bit" />
         </EntityType>
         <EntityType Name="Contact">
           <Key>
@@ -42,16 +43,15 @@
           <Property Name="IsRead" Type="bit" />
           <Property Name="CategoryId" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'DbMyPortfolio.dbo.Education' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Education">
           <Key>
             <PropertyRef Name="EducationId" />
           </Key>
           <Property Name="EducationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date" Type="nvarchar" MaxLength="50" />
           <Property Name="SubTitle" Type="nvarchar" MaxLength="50" />
-          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Experience">
           <Key>
@@ -125,6 +125,7 @@ warning 6002: The table/view 'DbMyPortfolio.dbo.Service' does not have a primary
           <Property Name="Title" Type="nvarchar" MaxLength="50" />
           <Property Name="Url" Type="nvarchar" MaxLength="100" />
           <Property Name="Icon" Type="nvarchar" MaxLength="250" />
+          <Property Name="Status" Type="bit" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -135,6 +136,16 @@ warning 6002: The table/view 'DbMyPortfolio.dbo.Service' does not have a primary
           <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Testimonial">
+          <Key>
+            <PropertyRef Name="TestimonialID" />
+          </Key>
+          <Property Name="TestimonialID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameSurname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Image" Type="nvarchar(max)" />
         </EntityType>
         <Association Name="FK_Contact_Category">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
@@ -153,20 +164,14 @@ warning 6002: The table/view 'DbMyPortfolio.dbo.Service' does not have a primary
           <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Education" EntityType="Self.Education" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Experience" EntityType="Self.Experience" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Feature" EntityType="Self.Feature" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Profile" EntityType="Self.Profile" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Skills" EntityType="Self.Skills" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SocialMedia" EntityType="Self.SocialMedia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Education" EntityType="Self.Education" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Education].[EducationId] AS [EducationId], 
-    [Education].[Title] AS [Title], 
-    [Education].[SubTitle] AS [SubTitle], 
-    [Education].[Description] AS [Description]
-    FROM [dbo].[Education] AS [Education]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="Testimonial" EntityType="Self.Testimonial" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Expertise" EntityType="Self.Expertise" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Expertise].[ExpertiseId] AS [ExpertiseId], 
@@ -199,6 +204,7 @@ warning 6002: The table/view 'DbMyPortfolio.dbo.Service' does not have a primary
           <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Contact" Relationship="Self.FK_Contact_Category" FromRole="Category" ToRole="Contact" />
+          <Property Name="Status" Type="Boolean" />
         </EntityType>
         <EntityType Name="Contact">
           <Key>
@@ -255,6 +261,7 @@ warning 6002: The table/view 'DbMyPortfolio.dbo.Service' does not have a primary
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Url" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Icon" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -273,7 +280,8 @@ warning 6002: The table/view 'DbMyPortfolio.dbo.Service' does not have a primary
           <Property Name="EducationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="SubTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Expertise">
           <Key>
@@ -323,6 +331,7 @@ warning 6002: The table/view 'DbMyPortfolio.dbo.Service' does not have a primary
           <EntitySet Name="About" EntityType="DbMyPortfolioModel.About" />
           <EntitySet Name="Experience" EntityType="DbMyPortfolioModel.Experience" />
           <EntitySet Name="Admin" EntityType="DbMyPortfolioModel.Admin" />
+          <EntitySet Name="Testimonial" EntityType="DbMyPortfolioModel.Testimonial" />
         </EntityContainer>
         <EntityType Name="About">
           <Key>
@@ -350,6 +359,16 @@ warning 6002: The table/view 'DbMyPortfolio.dbo.Service' does not have a primary
           <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="Testimonial">
+          <Key>
+            <PropertyRef Name="TestimonialID" />
+          </Key>
+          <Property Name="TestimonialID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -359,6 +378,7 @@ warning 6002: The table/view 'DbMyPortfolio.dbo.Service' does not have a primary
           <EntitySetMapping Name="Category">
             <EntityTypeMapping TypeName="DbMyPortfolioModel.Category">
               <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
               </MappingFragment>
@@ -417,6 +437,7 @@ warning 6002: The table/view 'DbMyPortfolio.dbo.Service' does not have a primary
           <EntitySetMapping Name="SocialMedia">
             <EntityTypeMapping TypeName="DbMyPortfolioModel.SocialMedia">
               <MappingFragment StoreEntitySet="SocialMedia">
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="SocialMediaId" ColumnName="SocialMediaId" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Url" ColumnName="Url" />
@@ -438,6 +459,7 @@ warning 6002: The table/view 'DbMyPortfolio.dbo.Service' does not have a primary
           <EntitySetMapping Name="Education">
             <EntityTypeMapping TypeName="DbMyPortfolioModel.Education">
               <MappingFragment StoreEntitySet="Education">
+                <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="EducationId" ColumnName="EducationId" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="SubTitle" ColumnName="SubTitle" />
@@ -491,6 +513,17 @@ warning 6002: The table/view 'DbMyPortfolio.dbo.Service' does not have a primary
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Testimonial">
+            <EntityTypeMapping TypeName="DbMyPortfolioModel.Testimonial">
+              <MappingFragment StoreEntitySet="Testimonial">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="NameSurname" ColumnName="NameSurname" />
+                <ScalarProperty Name="TestimonialID" ColumnName="TestimonialID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

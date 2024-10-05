@@ -1,40 +1,58 @@
-﻿
+﻿@model List<MyPortfolioProject.Models.Category>
 @{
-    Layout = null;
+    Layout = "~/Views/Admin/Index.cshtml";
+    string durum = "";
+
 }
 
+<h2 class="mb-4">Mesaj Kategorileri Listesi</h2>
 
-<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 
-<div class="container">
-    
     <table class="table table-bordered">
-        <br />
         <tr>
-            <th>Kategori Id</th>
+            <th>Kategori ID</th>
             <th>Kategori Adı</th>
-            <th>Kategori Durum</th>
-            <th>Detaylar</th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>Sebze Meyve</td>
-            <td>Aktif</td>
-            <td><button class="btn btn-primary">Detaylar</button> </td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>İçecek</td>
-            <td>Aktif</td>
-            <td><button class="btn btn-primary">Detaylar</button></td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Tatlılar</td>
-            <td>Aktif</td>
-            <td><button class="btn btn-primary">Detaylar</button></td>
+            <th>Kategori Durumu</th>
+            <th> </th>
+            <th>Sil</th>
+            <th>Güncelle</th>
         </tr>
 
+        @foreach (var item in Model)
+        {
+
+            if(item.Status==true)
+            {
+                durum = "Aktif";
+            }
+            else
+            {
+                durum = "Pasif";
+            }
+
+            <tr>
+                <td>@item.CategoryId</td>
+
+
+                <td>@item.CategoryName</td>
+
+                <td>@durum</td>
+
+
+                @if (item.Status == false)
+                {
+                    <td><a href="/Category/ChangeCategoryStatusToTrue/@item.CategoryId" class="btn btn-outline-success">Aktif yap</a></td>
+                }
+                else
+                {
+                    <td><a href="/Category/ChangeCategoryStatusToFalse/@item.CategoryId" class="btn btn-outline-dark">Pasif Yap</a></td>
+                }
+
+
+                <td><a href="/Category/DeleteCategory/@item.CategoryId" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Category/UpdateCategory/@item.CategoryId" class="btn btn-warning">Güncelle</a></td>
+            </tr>
+        }
     </table>
+    <a href="/Category/CreateCategory/" class="btn btn-info">Kategori Ekle</a>
 
-</div>
