@@ -1,0 +1,7 @@
+﻿@model List<MyPortfolioProject.Models.SocialMedia>
+
+@foreach (var item in Model)
+{
+    <a class="btn btn-primary btn-sm-square me-3" href="@item.Url"><i class="fab @item.Icon text-white"></i></a>
+}
+

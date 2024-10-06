@@ -1,0 +1,27 @@
+﻿@model  MyPortfolioProject.Models.About
+@{
+    ViewBag.Title = "CreateAbout";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<h2 class="mb-4">Hakkımda Ekleme Sayfası</h2>
+
+
+<form method="post">
+
+    @Html.HiddenFor(x => x.AboutId)
+
+    <label>Başlık</label>
+    @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+    <br />
+    <label>Açıklama</label>
+    @Html.TextAreaFor(x => x.Description, new { @class = "form-control", @rows = "4" })
+    <br />
+    <label>Resim</label>
+    @Html.TextBoxFor(x => x.ımageUrl, new { @class = "form-control" })
+    <br />
+
+    <button class="btn btn-info">Kaydet</button>
+</form>
+
+

@@ -69,6 +69,11 @@ namespace MyPortfolioProject.Controllers
             var values = context.Experience.ToList();
             return PartialView(values);
         }
+        public PartialViewResult PartialIntern()
+        {
+            var values=context.Intern.ToList();
+            return PartialView(values);
+        }
         public PartialViewResult PartialSkill()
         {
             var values = context.Skills.Where(x => x.Status == true).ToList();
@@ -81,7 +86,8 @@ namespace MyPortfolioProject.Controllers
         }
         public PartialViewResult PartialPortfolio()
         {
-            return PartialView();
+            var values=context.Portfolio.ToList();
+            return PartialView(values);
         }
 
         public PartialViewResult PartialTestimonial()
@@ -109,6 +115,22 @@ namespace MyPortfolioProject.Controllers
         public PartialViewResult PartialFooter()
         {
             return PartialView();
+        }
+
+        public PartialViewResult PartialSocialMediaHeader()
+        {
+            var values= context.SocialMedia.Where(x=>x.Status==true).ToList();
+            return PartialView(values);
+        }
+        public PartialViewResult PartialSocialMediaAbout()
+        {
+            var values = context.SocialMedia.Where(x=>x.Status==true).ToList();
+            return PartialView(values);
+        }
+        public PartialViewResult PartialSocialMediaFooter()
+        {
+            var values = context.SocialMedia.Where(x => x.Status == true).ToList();
+            return PartialView(values);
         }
 
     }

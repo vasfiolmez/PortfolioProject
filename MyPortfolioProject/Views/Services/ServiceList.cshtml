@@ -7,7 +7,7 @@
 
 <h2 class="mb-4">Hizmetlerim Listesi ve İşlemleri</h2>
 
-<a href="/Service/CreateService/" class="btn btn-info">Yeni Hizmet Ekleme</a>
+<a href="/Services/CreateService/" class="btn btn-info">Yeni Hizmet Ekleme</a>
 
 <br />
 <br />
@@ -29,8 +29,8 @@
             <td>@item.Description</td>
             <td>@item.Icon</td>
             <td>
-                <a href="/Service/UpdateService/@item.ServiceId" class="btn btn-warning">Güncelle</a>
-                <a href="/Service/DeleteService/@item.ServiceId" class="btn btn-danger">Sil</a>
+                <a href="/Services/UpdateService/@item.ServiceId" class="btn btn-warning">Güncelle</a>
+                <a href="/Services/DeleteService/@item.ServiceId" class="btn btn-danger">Sil</a>
             </td>
         </tr>
     }

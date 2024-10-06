@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyPortfolioProject.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,7 @@ namespace MyPortfolioProject.Controllers
 {
     public class AdminController : Controller
     {
+        DbMyPortfolioEntities context=new DbMyPortfolioEntities();
         public ActionResult Index()
         {
             return View();
@@ -18,6 +20,9 @@ namespace MyPortfolioProject.Controllers
         }
         public PartialViewResult PartialSidebar() 
         {
+            var ımg=context.Profile.Select(x => x.ImageUrl).FirstOrDefault();
+
+            ViewBag.img = ımg;
             return PartialView();
         }
         public PartialViewResult PartialNavbar() 

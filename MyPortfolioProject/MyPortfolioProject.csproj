@@ -52,6 +52,12 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -128,9 +134,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\DashBoardController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\EducationController.cs" />
     <Compile Include="Controllers\ExperienceController.cs" />
@@ -165,10 +173,10 @@
     <Compile Include="Models\Experience.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Expertise.cs">
+    <Compile Include="Models\Feature.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Feature.cs">
+    <Compile Include="Models\Intern.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Model1.Context.cs">
@@ -185,6 +193,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Portfolio.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Profile.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -223,6 +234,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\Pigra-1.0.0\css\bootstrap.min.css" />
     <Content Include="Content\Pigra-1.0.0\css\style.css" />
     <Content Include="Content\Pigra-1.0.0\img\about.jpg" />
@@ -234,6 +246,7 @@
     <Content Include="Content\Pigra-1.0.0\img\Portfolio-1.jpg" />
     <Content Include="Content\Pigra-1.0.0\img\portfolio-2.jpg" />
     <Content Include="Content\Pigra-1.0.0\img\portfolio-3.jpg" />
+    <Content Include="Content\Pigra-1.0.0\img\resim22.jpg" />
     <Content Include="Content\Pigra-1.0.0\img\testimonial-img-1.jpg" />
     <Content Include="Content\Pigra-1.0.0\img\testimonial-img-2.jpg" />
     <Content Include="Content\Pigra-1.0.0\img\testimonial-img-3.jpg" />
@@ -489,6 +502,7 @@
     <Content Include="Content\Pigra-1.0.0\scss\bootstrap\scss\_type.scss" />
     <Content Include="Content\Pigra-1.0.0\scss\bootstrap\scss\_utilities.scss" />
     <Content Include="Content\Pigra-1.0.0\scss\bootstrap\scss\_variables.scss" />
+    <Content Include="Content\Cv.pdf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -558,12 +572,26 @@
     <Content Include="Views\Services\CreateService.cshtml" />
     <Content Include="Views\Services\UpdateService.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Intern\InternList.cshtml" />
+    <Content Include="Views\Intern\CreateIntern.cshtml" />
+    <Content Include="Views\Intern\UpdateIntern.cshtml" />
+    <Content Include="Views\Default\PartialIntern.cshtml" />
+    <Content Include="Views\Default\PartialSocialMediaHeader.cshtml" />
+    <Content Include="Views\Default\PartialSocialMediaAbout.cshtml" />
+    <Content Include="Views\Default\PartialSocialMediaFooter.cshtml" />
+    <Content Include="Views\DashBoard\Index.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\About\CreateAbout.cshtml" />
+    <Content Include="Views\About\UpdateAbout.cshtml" />
+    <Content Include="Views\Testimonial\TestimonialList.cshtml" />
+    <Content Include="Views\Testimonial\TestimonialCreate.cshtml" />
+    <Content Include="Views\Testimonial\TestimonialUpdate.cshtml" />
+    <Content Include="Views\Portfolio\Index.cshtml" />
+    <Content Include="Views\Portfolio\PortfolioUpdate.cshtml" />
+    <Content Include="Views\Portfolio\PortfolioCreate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Intern\" />
-    <Folder Include="Views\Portfolio\" />
-    <Folder Include="Views\Testimonial\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

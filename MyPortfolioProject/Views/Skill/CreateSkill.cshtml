@@ -1,4 +1,4 @@
-﻿
+﻿@model MyPortfolioProject.Models.Skills
 @{
     ViewBag.Title = "CreateSkill";
     Layout = "~/Views/Admin/Index.cshtml";
@@ -8,11 +8,16 @@
 <form method="post">
 
     <label>Yetenek Başlığı</label>
-    <input type="text" name="SkillName" class="form-control" />
+    @Html.TextBoxFor(x => x.SkillName, new {@class="form-control"})
+    @Html.ValidationMessageFor(m => m.SkillName, "", new {@class="text-danger"})
     <br />
 
     <label>Yetenek Değeri</label>
     <input type="number" name="Rate" class="form-control" />
+    <br />
+
+    <label>İkon</label>
+    @Html.TextBoxFor(x=>x.Icon, new {@class="form-control"})
     <br />
 
     <button class="btn btn-info">Yeteneği Ekle</button>

@@ -1,8 +1,28 @@
-﻿
+﻿@model MyPortfolioProject.Models.Skills
 @{
     ViewBag.Title = "UpdateSkill";
     Layout = "~/Views/Admin/Index.cshtml";
 }
 
-<h2>UpdateSkill</h2>
+<h2 class="mb-4">Yetenek Güncelleme Sayfası</h2>
+<form method="post">
+    @Html.HiddenFor(x => x.SkillId)
+
+    <label>Yetenek Başlığı</label>
+    @Html.TextBoxFor(x => x.SkillName, new { @class = "form-control" })
+    <br />
+
+    <label>Yetenek Değeri</label>
+    @Html.TextBoxFor(x => x.Rate, new { @class = "form-control" })
+    <br />
+
+    <label>İkon</label>
+    @Html.TextBoxFor(x => x.Icon, new { @class = "form-control" })
+    <br />
+
+    <button class="btn btn-info">Yeteneği Güncelle</button>
+
+</form>
+
+
 

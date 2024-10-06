@@ -33,11 +33,12 @@ namespace MyPortfolioProject.Models
         public virtual DbSet<SocialMedia> SocialMedia { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Education> Education { get; set; }
-        public virtual DbSet<Expertise> Expertise { get; set; }
         public virtual DbSet<Service> Service { get; set; }
         public virtual DbSet<About> About { get; set; }
         public virtual DbSet<Experience> Experience { get; set; }
         public virtual DbSet<Admin> Admin { get; set; }
         public virtual DbSet<Testimonial> Testimonial { get; set; }
+        public virtual DbSet<Intern> Intern { get; set; }
+        public virtual DbSet<Portfolio> Portfolio { get; set; }
     }
 }

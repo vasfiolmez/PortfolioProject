@@ -11,16 +11,13 @@ namespace MyPortfolioProject.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
-    public partial class Skills
+    
+    public partial class Intern
     {
-        public int SkillId { get; set; }
-
-        [Required(ErrorMessage = "{0} alaný gereklidir.")] 
-        public string SkillName { get; set; }
-        public Nullable<byte> Rate { get; set; }
-        public string Icon { get; set; }
-        public Nullable<bool> Status { get; set; }
+        public int InternId { get; set; }
+        public string Title { get; set; }
+        public string SubTitle { get; set; }
+        public string Description { get; set; }
+        public string Date { get; set; }
     }
 }
