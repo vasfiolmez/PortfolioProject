@@ -7,4 +7,4 @@
 <h2>Veritabanı Diyagramı</h2>
 
 <h2>Proje Video</h2>
-https://github.com/user-attachments/assets/74651c7a-fb80-4014-b8d8-0bd00aabb012
+
