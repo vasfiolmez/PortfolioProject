@@ -27,8 +27,12 @@
 
 <h2>Veritabanı Diyagramı</h2>
 
+![myportfolidiyagram](https://github.com/user-attachments/assets/a03a9968-0ef3-450a-8bf5-f94c0d44a146)
 
 
 <h2>Proje Video</h2>
+
+https://github.com/user-attachments/assets/77a9f23d-59f4-4d90-9004-076a956846a4
+
 
 
